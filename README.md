@@ -3,7 +3,7 @@ In this paper, we introduce a new framework for unsupervised deep homography est
 
 ## Data pre-processing 
 
-Please refer to [CA-UDHE](https://github.com/JirongZhang/DeepHomography.git)
+Please refer to [Content-Aware Unsupervised Deep Homography Estimation](https://github.com/JirongZhang/DeepHomography.git).
 
 ## Pretrained model
 
