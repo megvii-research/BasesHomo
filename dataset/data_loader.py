@@ -40,7 +40,7 @@ class HomoTrainData(Dataset):
         self.horizontal_flip_aug = True
 
         # 路径
-        self.list_path = params.train_data_dir  # '/data/deephomography/DeepH/PaperDataSet/noDark_harfP_mul_18_6.txt'
+        self.list_path = params.train_data_dir  
         self.data_infor = open(self.list_path, 'r').readlines()
 
         # others
@@ -87,8 +87,7 @@ class HomoTrainData(Dataset):
             height, width = img1.shape[:2]
             patch_size_h, patch_size_w = self.crop_size
 
-            x = np.random.randint(self.rho,
-                                  width - self.rho - patch_size_w)  # [320, 640] --> [patch_size_h, patch_size_w]
+            x = np.random.randint(self.rho, width - self.rho - patch_size_w)  
             y = np.random.randint(self.rho, height - self.rho - patch_size_h)
             start = [x, y]
             img1_patch = img1[y: y + patch_size_h, x: x + patch_size_w, :]
@@ -104,7 +103,7 @@ class HomoTrainData(Dataset):
             img2 = (img2 - self.mean_I) / self.std_I
 
         if gray:
-            img1 = np.mean(img1, axis=2, keepdims=True)  # 求均值变灰度图
+            img1 = np.mean(img1, axis=2, keepdims=True)  
             img2 = np.mean(img2, axis=2, keepdims=True)
 
         img1_patch, img2_patch, start = random_crop(img1, img2)
@@ -124,8 +123,8 @@ class HomoTestData(Dataset):
         self.horizontal_flip_aug = False
 
         # 路径
-        self.npy_list = os.path.join(params.test_data_dir, "Test/CVPR2021_list.txt")  # files_path = '/data/for_jr/' CVPR2021_list pair_path_ECCV
-        self.npy_path = os.path.join(params.test_data_dir, "Test/Npz_Set")  # NPYFile Npz_Set
+        self.npy_list = os.path.join(params.test_data_dir, "Test/test_list.txt")  
+        self.npy_path = os.path.join(params.test_data_dir, "Test/Npz_Set")  
         self.files_path = os.path.join(params.test_data_dir, "Liftres/Data")
 
         self.data_infor = open(self.npy_list, 'r').readlines()

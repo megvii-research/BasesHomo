@@ -18,7 +18,7 @@ def monitor():
 
         valid_dirs = [
             'experiment_learning_rate',
-        ] # 想看哪组实验就在这里改
+        ] 
         exp_dirs = glob.glob('./experiments/*/exp_*')
         exp_dirs = [i for i in exp_dirs if i.split('/')[-2] in valid_dirs]
 

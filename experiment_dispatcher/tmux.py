@@ -39,26 +39,26 @@ class TmuxOps():
 
     @classmethod
     def split_window_by_2(cls, session_name, window_name):
-        # ''' 拆成4个panel '''
+
         cls.split_window(session_name, window_name, h_v='v', panel_number=0)
 
     @classmethod
     def split_window_by_4(cls, session_name, window_name):
-        # ''' 拆成4个panel '''
+ 
         cls.split_window(session_name, window_name, h_v='h', panel_number=0)
         cls.split_window(session_name, window_name, h_v='v', panel_number=0)
         cls.split_window(session_name, window_name, h_v='v', panel_number=2)
 
     @classmethod
     def split_window_by_8(cls, session_name, window_name):
-        # ''' 先拆成4个panel '''
+   
         cls.split_window_by_4(session_name, window_name)
         for i in range(4):
             cls.split_window(session_name, window_name, h_v='v', panel_number=i * 2)
 
     @classmethod
     def split_window_by_16(cls, session_name, window_name):
-        # ''' 先拆成8个panel '''
+   
         cls.split_window_by_8(session_name, window_name)
         for i in range(8):
             cls.split_window(session_name, window_name, h_v='h', panel_number=i * 2)
