@@ -29,21 +29,18 @@ def imdecode(data, require_chl3=True, require_alpha=False):
 class HomoTrainData(Dataset):
 
     def __init__(self, params):
-        # 参数预设
+        
         self.mean_I = np.array([118.93, 113.97, 102.60]).reshape(1, 1, 3)
         self.std_I = np.array([69.85, 68.81, 72.45]).reshape(1, 1, 3)
         self.crop_size = params.crop_size
 
-        # aug 选项
         self.rho = params.rho
         self.normalize = True
         self.horizontal_flip_aug = True
 
-        # 路径
         self.list_path = params.train_data_dir  
         self.data_infor = open(self.list_path, 'r').readlines()
 
-        # others
         self.seed = 0
         random.seed(self.seed)
         random.shuffle(self.data_infor)
@@ -67,7 +64,6 @@ class HomoTrainData(Dataset):
         # img aug
         img1, img2, img1_patch, img2_patch, start = self.data_aug(img1, img2, normalize=self.normalize,
                                                                   horizontal_flip=self.horizontal_flip_aug)
-
         # array to tensor
         imgs_gray_full = torch.tensor(np.concatenate([img1, img2], axis=2)).permute(2, 0, 1).float()
         imgs_gray_patch = torch.tensor(np.concatenate([img1_patch, img2_patch], axis=2)).permute(2, 0, 1).float()
@@ -113,16 +109,14 @@ class HomoTrainData(Dataset):
 class HomoTestData(Dataset):
 
     def __init__(self, params):
-        # 参数预设
+
         self.mean_I = np.array([118.93, 113.97, 102.60]).reshape(1, 1, 3)
         self.std_I = np.array([69.85, 68.81, 72.45]).reshape(1, 1, 3)
         self.crop_size = params.crop_size
 
-        # aug 选项
         self.normalize = True
         self.horizontal_flip_aug = False
 
-        # 路径
         self.npy_list = os.path.join(params.test_data_dir, "Test/test_list.txt")  
         self.npy_path = os.path.join(params.test_data_dir, "Test/Npz_Set")  
         self.files_path = os.path.join(params.test_data_dir, "Liftres/Data")
@@ -190,7 +184,7 @@ class HomoTestData(Dataset):
             img2 = (img2 - self.mean_I) / self.std_I
 
         if gray:
-            img1 = np.mean(img1, axis=2, keepdims=True)  # 变均值，灰度
+            img1 = np.mean(img1, axis=2, keepdims=True)  
             img2 = np.mean(img2, axis=2, keepdims=True)
 
         return img1, img2
