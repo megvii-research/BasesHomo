@@ -145,7 +145,7 @@ class Manager():
         if "val" in self.dataloaders:
             val_latest_metrics_name = os.path.join(self.params.model_dir, "val_metrics_latest.json")
             utils.save_dict_to_json(self.val_status, val_latest_metrics_name)
-            is_best = self.cur_val_score < self.best_val_score # 这里要根据实际需要改，是取大值更优还是小值更优
+            is_best = self.cur_val_score < self.best_val_score
             if is_best:
                 # save metrics
                 self.best_val_score = self.cur_val_score
@@ -167,7 +167,7 @@ class Manager():
         if "test" in self.dataloaders:
             test_latest_metrics_name = os.path.join(self.params.model_dir, "test_metrics_latest.json")
             utils.save_dict_to_json(self.test_status, test_latest_metrics_name)
-            is_best = self.cur_test_score < self.best_test_score # 这里要根据实际需要改，是取大值更优还是小值更优
+            is_best = self.cur_test_score < self.best_test_score 
             if is_best:
                 # save metrics
                 self.best_test_score = self.cur_test_score
@@ -198,7 +198,7 @@ class Manager():
             except:
                 print("Using custom loading net")
                 net_dict = self.model.state_dict()
-                
+
                 if "module" not in list(state["state_dict"].keys())[0]:
                     state_dict = {"module." + k: v for k, v in state["state_dict"].items() if "module." + k in net_dict.keys()}
                 else:

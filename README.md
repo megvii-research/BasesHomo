@@ -1,4 +1,4 @@
-# Motion Basis Learning for Unsupervised Deep Homography Estimation with Subspace Projection [paper](https://arxiv.org/abs/2103.15346)
+# (ICCV 2021 Oral) Motion Basis Learning for Unsupervised Deep Homography Estimation with Subspace Projection [paper](https://arxiv.org/abs/2103.15346)
 In this paper, we introduce a new framework for unsupervised deep homography estimation. Our contributions are 3 folds. First, unlike previous methods that regress 4 offsets for a homography, we propose a homography flow representation, which can be estimated by a weighted sum of 8 pre-defined homography flow bases. Second, considering a homography contains 8 Degree-of-Freedoms (DOFs) that is much less than the rank of the network features, we propose a Low Rank Representation (LRR) block that reduces the feature rank, so that features corresponding to the dominant motions are retained while others are rejected. Last, we propose a Feature Identity Loss (FIL) to enforce the learned image feature warp-equivariant, meaning that the result should be identical if the order of warp operation and feature extraction is swapped. With this constraint, the unsupervised optimization is achieved more effectively and more stable features are learned. Extensive experiments are conducted to demonstrate the effectiveness of all the newly proposed components, and results show that our approach outperforms the state-of-the-art on the homography benchmark datasets both qualitatively and quantitatively.
 
 ## Requirements
@@ -30,8 +30,10 @@ https://1drv.ms/u/s!AglwI3TlqfaZhlU4BXo7iYiyLdI5?e=tCygKh
 https://pan.baidu.com/s/1v4tF_RPEKgc6YF_mfRl7jQ (key: b3yq)
 ```
 
+## Test
+python evaluate.py
 
-## Meta
+## Citation
 
 All code is provided for research purposes only and without any warranty. Any commercial use requires our consent. If you use this code or ideas from the paper for your research, please cite our paper:
 ```
