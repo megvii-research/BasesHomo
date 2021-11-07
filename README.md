@@ -10,6 +10,17 @@ In this paper, we introduce a new framework for unsupervised deep homography est
 
 Please refer to [Content-Aware Unsupervised Deep Homography Estimation](https://github.com/JirongZhang/DeepHomography.git).
 
+1. Download raw data
+```sh
+# GoogleDriver
+https://drive.google.com/file/d/19d2ylBUPcMQBb_MNBBGl9rCAS7SU-oGm/view?usp=sharing
+# BaiduYun
+https://pan.baidu.com/s/1Dkmz4MEzMtBx-T7nG0ORqA (key: gvor)
+```
+2. Unzip the data to directory "./dataset"
+
+3. Run "video2img.py"
+
 ## Pretrained model
 
 ```sh
