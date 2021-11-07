@@ -6,7 +6,6 @@ import shutil
 import time
 from collections import defaultdict
 
-import boto3
 import numpy as np
 import torch
 from termcolor import colored
@@ -186,7 +185,10 @@ class Manager():
 
     def load_checkpoints(self):
         if self.params.save_mode == "local":
-            state = torch.load(self.params.restore_file)
+            if self.params.cuda:
+                state = torch.load(self.params.restore_file)
+            else:
+                state = torch.load(self.params.restore_file, map_location=torch.device('cpu'))
             
         ckpt_component = []
         if "state_dict" in state and self.model is not None:
@@ -196,12 +198,15 @@ class Manager():
             except:
                 print("Using custom loading net")
                 net_dict = self.model.state_dict()
+                
                 if "module" not in list(state["state_dict"].keys())[0]:
                     state_dict = {"module." + k: v for k, v in state["state_dict"].items() if "module." + k in net_dict.keys()}
                 else:
-                    state_dict = {k: v for k, v in state["state_dict"].items() if k in net_dict.keys()}
+                    state_dict = {k.replace("module.",""): v for k, v in state["state_dict"].items() if k.replace("module.","") in net_dict.keys()}
+
                 net_dict.update(state_dict)
                 self.model.load_state_dict(net_dict, strict=False)
+
             ckpt_component.append("net")
 
         if not self.params.only_weights:

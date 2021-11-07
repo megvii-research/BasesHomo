@@ -86,6 +86,7 @@ def compute_eval_results(data_batch, output_batch, manager):
 
     errs = []
     errs_p = []
+
     for i in range(len(points)):  # len(points)
         point = eval(points[i])
         err = 0
@@ -99,6 +100,7 @@ def compute_eval_results(data_batch, output_batch, manager):
         errs.append(err / (j + 1))
         errs_p.append(tmp)
     # ==================================================================== return ======================================================================
+
     eval_results = {}
     eval_results["img1_full_warp"] = img1_full_warp
     eval_results["errs"] = errs

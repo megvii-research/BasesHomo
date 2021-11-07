@@ -4,27 +4,12 @@ import pickle
 import random
 import cv2
 
-import nori2 as nori
 import numpy as np
 import torch
 from PIL import Image
 from torch.utils.data import DataLoader, Dataset
 
 _logger = logging.getLogger(__name__)
-
-def imdecode(data, require_chl3=True, require_alpha=False):
-
-    img = cv2.imdecode(np.fromstring(data, np.uint8), cv2.IMREAD_UNCHANGED)
-
-    assert img is not None, 'failed to decode'
-    if img.ndim == 2 and require_chl3:
-        img = img.reshape(img.shape + (1,))
-    if img.shape[2] == 1 and require_chl3:
-        img = np.tile(img, (1, 1, 3))
-    if img.ndim == 3 and img.shape[2] == 3 and require_alpha:
-        assert img.dtype == np.uint8
-        img = np.concatenate([img, np.ones_like(img[:, :, :1]) * 255], axis=2)
-    return img
 
 class HomoTrainData(Dataset):
 
@@ -44,7 +29,6 @@ class HomoTrainData(Dataset):
         self.seed = 0
         random.seed(self.seed)
         random.shuffle(self.data_infor)
-        self.nf = nori.Fetcher()
 
     def __len__(self):
         # return size of dataset
@@ -55,11 +39,8 @@ class HomoTrainData(Dataset):
         # img loading
         img_names = self.data_infor[idx]
         img_names = img_names.split(' ')
-        data1 = self.nf.get(img_names[0]) # Read image according to data list
-        data2 = self.nf.get(img_names[1][:-1])
-
-        img1 = imdecode(data1)
-        img2 = imdecode(data2)
+        data1 = cv2.imread(img_names[0]) # Read image according to data list
+        data2 = cv2.imread(img_names[1][:-1])
 
         # img aug
         img1, img2, img1_patch, img2_patch, start = self.data_aug(img1, img2, normalize=self.normalize,
@@ -117,9 +98,9 @@ class HomoTestData(Dataset):
         self.normalize = True
         self.horizontal_flip_aug = False
 
-        self.npy_list = os.path.join(params.test_data_dir, "Test/test_list.txt")  
-        self.npy_path = os.path.join(params.test_data_dir, "Test/Npz_Set")  
-        self.files_path = os.path.join(params.test_data_dir, "Liftres/Data")
+        self.npy_list = os.path.join(params.test_data_dir, "test_list.txt")  
+        self.npy_path = os.path.join(params.test_data_dir, "Coordinate-v2")  
+        self.files_path = os.path.join(params.test_data_dir, "test")
 
         self.data_infor = open(self.npy_list, 'r').readlines()
 

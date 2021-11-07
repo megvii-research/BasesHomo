@@ -1,7 +1,7 @@
 {
     "project_name": "HomoBases",
-    "train_data_dir": "/data/deephomography/DeepH/PaperDataSet/noDark_harfP_mul_18_6.txt",
-    "test_data_dir": "/data/for_jr/",
+    "train_data_dir": "./dataset/train_list.txt",
+    "test_data_dir": "./dataset/",
     "dataset_type": "basic",
     "transform_type": "basic",
     "net_type": "basic",
@@ -22,6 +22,7 @@
     "gpu": 1,
 
     "crop_size": [320, 576],
+
     "rho": 16,
     "num_basis": 8,
     "weight_fil": 1,

@@ -86,6 +86,7 @@ def evaluate(model, manager):
                 if k % 200 == 0:
                     print(k)
 
+                print("{}:{}".format(k, err_avg[j]))
                 # eval_save_result([img2_full, img1_full_warp], npy_name[j] + "_" + str(err_avg[j]) + ".gif", manager)
 
         MSE_RE_avg = sum(MSE_RE) / len(MSE_RE)

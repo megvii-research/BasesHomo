@@ -115,6 +115,9 @@ class Net(nn.Module):
         output["img_warp"] = [img1_warp, img2_warp]
         output['basis_weight'] =[weight_f, weight_b]
 
+        # import pdb
+        # pdb.set_trace()
+        
         return output
 
 # ========================================================================================================================
