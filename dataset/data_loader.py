@@ -122,7 +122,10 @@ class HomoTestData(Dataset):
 
         img1 = cv2.imread(os.path.join(img_files, img_names[0]))
         img2 = cv2.imread(os.path.join(img_files, img_names[1]))
-
+        
+        img1 = cv2.resize(img1, (640, 360))
+        img2 = cv2.resize(img2, (640, 360))
+        
         # img aug
         img1_rs, img2_rs = img1, img2
         if img1.shape[0] != self.crop_size[0] or img1.shape[1] != self.crop_size[1]:
