@@ -39,8 +39,8 @@ class HomoTrainData(Dataset):
         # img loading
         img_names = self.data_infor[idx]
         img_names = img_names.split(' ')
-        data1 = cv2.imread(img_names[0]) # Read image according to data list
-        data2 = cv2.imread(img_names[1][:-1])
+        img1 = cv2.imread(img_names[0]) # Read image according to data list
+        img2 = cv2.imread(img_names[1][:-1])
 
         # img aug
         img1, img2, img1_patch, img2_patch, start = self.data_aug(img1, img2, normalize=self.normalize,
