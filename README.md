@@ -6,6 +6,9 @@
 ## Abstract
 In this paper, we introduce a new framework for unsupervised deep homography estimation. Our contributions are 3 folds. First, unlike previous methods that regress 4 offsets for a homography, we propose a homography flow representation, which can be estimated by a weighted sum of 8 pre-defined homography flow bases. Second, considering a homography contains 8 Degree-of-Freedoms (DOFs) that is much less than the rank of the network features, we propose a Low Rank Representation (LRR) block that reduces the feature rank, so that features corresponding to the dominant motions are retained while others are rejected. Last, we propose a Feature Identity Loss (FIL) to enforce the learned image feature warp-equivariant, meaning that the result should be identical if the order of warp operation and feature extraction is swapped. With this constraint, the unsupervised optimization is achieved more effectively and more stable features are learned. Extensive experiments are conducted to demonstrate the effectiveness of all the newly proposed components, and results show that our approach outperforms the state-of-the-art on the homography benchmark datasets both qualitatively and quantitatively.
 
+## Motivation
+![motivation](https://user-images.githubusercontent.com/1344482/180999724-426f5396-8313-4893-9cbc-1943cf9b8b77.JPG)
+
 ## Presentation Video
 [[Youbube](https://www.youtube.com/watch?v=EcU02njjWHE)], [[Bilibili](https://www.bilibili.com/video/BV1ah411H7Th/)]
 
@@ -13,7 +16,8 @@ In this paper, we introduce a new framework for unsupervised deep homography est
 <img width="424" alt="basisHomo" src="https://user-images.githubusercontent.com/1344482/180954864-f9f0ac1b-f052-4a8f-bb3c-9f21f0ed46f3.png">
 
 ## Pipeline
-<img width="1014" alt="pipeline" src="https://user-images.githubusercontent.com/1344482/180955671-19fd8200-48bf-4c2f-b175-8fdfb789b03b.png">
+![pipeline](https://user-images.githubusercontent.com/1344482/181000099-9c1e10fa-2b33-42f2-9804-03e5fd196ac8.JPG)
+
 
 
 
