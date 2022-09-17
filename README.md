@@ -1,6 +1,6 @@
 # [ICCV 2021 Oral] Motion Basis Learning for Unsupervised Deep Homography Estimation with Subspace Projection [paper](https://openaccess.thecvf.com/content/ICCV2021/papers/Ye_Motion_Basis_Learning_for_Unsupervised_Deep_Homography_Estimation_With_Subspace_ICCV_2021_paper.pdf)
 
-<h4 align="center">Nianjin Ye$^1$, Chuan Wang$^1$, Haoqiang Fan$^1$, Shuaicheng Liu$^{2,1}$</center>
+<h4 align="center">Nianjin Ye<sup>1</sup>, Chuan Wang<sup>1</sup>, Haoqiang Fan<sup>1</sup>, Shuaicheng Liu<sup>2,1</sup></center>
 <h4 align="center">1. Megvii Research, 2. University of Electronic Science and Technology of China </center>
 
 ## Presentation Video
